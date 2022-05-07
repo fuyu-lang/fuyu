@@ -5,6 +5,17 @@
   <img src="https://img.shields.io/github/license/fuyu-lang/fuyu?style=flat-square" alt="GitHub License" />
 </p>
 
+<p align="center">
+  <img
+    src="https://fuyu.so/img/fuyu-logo.svg"
+    width="192px"
+    height="192px"
+    alt="Fuyu logo"
+  />
+</p>
+
+<h4 align="center">Check it out &rarr; <a href="https://fuyu.so">https://fuyu.so</a></h4>
+
 > **Notice:** Fuyu is currently under development and not ready for production use. When Fuyu is released, this document will be updated.
 
 Fuyu is an _objectively functional_ programming language that combines
