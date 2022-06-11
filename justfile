@@ -15,8 +15,13 @@ output_dir := './output/'
 @fmt:
   go fmt {{go_verbose}} ./...
 
+# generate all code
+@generate:
+  go generate {{go_verbose}} ./...
+
 # build all projects
 @build:
+  mkdir {{output_dir}}
   go build -o {{output_dir}} {{go_verbose}} ./...
 
 # run all tests
