@@ -26,11 +26,7 @@ jobs:
           go-version: ${{ matrix.go-version }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Setup Just
-        uses: extractions/setup-just@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Build
-        run: just verbose=true build
+        run: make build
       - name: Test
-        run: just verbose=true test
+        run: make test
