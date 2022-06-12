@@ -17,6 +17,10 @@ fmt:
 	@$(GO) fmt ./...
 .PHONY: fmt
 
+fmt-check:
+	@sh scripts/fmt-check.sh
+.PHONY: fmt-check
+
 clean:
 	@rm -rf $(OUTPUT)
 .PHONY: clean
