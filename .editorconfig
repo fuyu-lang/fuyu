@@ -7,7 +7,7 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{md,yml}]
+[*.{md,sh,yml}]
 indent_size = 2
 
 [{Makefile,*.{mod,go}}]
