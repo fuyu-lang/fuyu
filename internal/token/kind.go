@@ -1,7 +1,7 @@
 package token
 
 // Kind is an enumeration representing the kind of a token.
-type Kind uint
+type Kind int
 
 const (
 	Illegal Kind = iota // Not allowed
@@ -25,7 +25,6 @@ const (
 	Always  // always
 	As      // as
 	Break   // break
-	Class   // class
 	Def     // def
 	Do      // do
 	Elif    // elif
@@ -33,6 +32,7 @@ const (
 	For     // for
 	From    // from
 	If      // if
+	Import  // import
 	In      // in
 	Loop    // loop
 	Panic   // panic
@@ -44,6 +44,7 @@ const (
 	Self    // self
 	Then    // then
 	Try     // try
+	Type    // type
 	Unless  // unless
 	Until   // until
 	Where   // where

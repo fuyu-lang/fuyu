@@ -45,9 +45,6 @@ func TestIsComment(t *testing.T) {
 	if Break.IsComment() {
 		t.Error("Break should not be a comment")
 	}
-	if Class.IsComment() {
-		t.Error("Class should not be a comment")
-	}
 	if Def.IsComment() {
 		t.Error("Def should not be a comment")
 	}
@@ -68,6 +65,9 @@ func TestIsComment(t *testing.T) {
 	}
 	if If.IsComment() {
 		t.Error("If should not be a comment")
+	}
+	if Import.IsComment() {
+		t.Error("Import should not be a comment")
 	}
 	if In.IsComment() {
 		t.Error("In should not be a comment")
@@ -101,6 +101,9 @@ func TestIsComment(t *testing.T) {
 	}
 	if Try.IsComment() {
 		t.Error("Try should not be a comment")
+	}
+	if Type.IsComment() {
+		t.Error("Type should not be a comment")
 	}
 	if Unless.IsComment() {
 		t.Error("Unless should not be a comment")
@@ -333,9 +336,6 @@ func TestIsSpace(t *testing.T) {
 	if Break.IsSpace() {
 		t.Error("Break should not be a space")
 	}
-	if Class.IsSpace() {
-		t.Error("Class should not be a space")
-	}
 	if Def.IsSpace() {
 		t.Error("Def should not be a space")
 	}
@@ -356,6 +356,9 @@ func TestIsSpace(t *testing.T) {
 	}
 	if If.IsSpace() {
 		t.Error("If should not be a space")
+	}
+	if Import.IsSpace() {
+		t.Error("Import should not be a space")
 	}
 	if In.IsSpace() {
 		t.Error("In should not be a space")
@@ -389,6 +392,9 @@ func TestIsSpace(t *testing.T) {
 	}
 	if Try.IsSpace() {
 		t.Error("Try should not be a space")
+	}
+	if Type.IsSpace() {
+		t.Error("Type should not be a space")
 	}
 	if Unless.IsSpace() {
 		t.Error("Unless should not be a space")
@@ -621,9 +627,6 @@ func TestIsNewline(t *testing.T) {
 	if Break.IsNewline() {
 		t.Error("Break should not be a newline")
 	}
-	if Class.IsNewline() {
-		t.Error("Class should not be a newline")
-	}
 	if Def.IsNewline() {
 		t.Error("Def should not be a newline")
 	}
@@ -644,6 +647,9 @@ func TestIsNewline(t *testing.T) {
 	}
 	if If.IsNewline() {
 		t.Error("If should not be a newline")
+	}
+	if Import.IsNewline() {
+		t.Error("Import should not be a newline")
 	}
 	if In.IsNewline() {
 		t.Error("In should not be a newline")
@@ -677,6 +683,9 @@ func TestIsNewline(t *testing.T) {
 	}
 	if Try.IsNewline() {
 		t.Error("Try should not be a newline")
+	}
+	if Type.IsNewline() {
+		t.Error("Type should not be a newline")
 	}
 	if Unless.IsNewline() {
 		t.Error("Unless should not be a newline")
@@ -909,9 +918,6 @@ func TestIsIdent(t *testing.T) {
 	if Break.IsIdent() {
 		t.Error("Break should not be an identifier")
 	}
-	if Class.IsIdent() {
-		t.Error("Class should not be an identifier")
-	}
 	if Def.IsIdent() {
 		t.Error("Def should not be an identifier")
 	}
@@ -932,6 +938,9 @@ func TestIsIdent(t *testing.T) {
 	}
 	if If.IsIdent() {
 		t.Error("If should not be an identifier")
+	}
+	if Import.IsIdent() {
+		t.Error("Import should not be an identifier")
 	}
 	if In.IsIdent() {
 		t.Error("In should not be an identifier")
@@ -965,6 +974,9 @@ func TestIsIdent(t *testing.T) {
 	}
 	if Try.IsIdent() {
 		t.Error("Try should not be an identifier")
+	}
+	if Type.IsIdent() {
+		t.Error("Type should not be an identifier")
 	}
 	if Unless.IsIdent() {
 		t.Error("Unless should not be an identifier")
@@ -1197,9 +1209,6 @@ func TestIsKeyword(t *testing.T) {
 	if !Break.IsKeyword() {
 		t.Error("Break should be a keyword")
 	}
-	if !Class.IsKeyword() {
-		t.Error("Class should be a keyword")
-	}
 	if !Def.IsKeyword() {
 		t.Error("Def should be a keyword")
 	}
@@ -1220,6 +1229,9 @@ func TestIsKeyword(t *testing.T) {
 	}
 	if !If.IsKeyword() {
 		t.Error("If should be a keyword")
+	}
+	if !Import.IsKeyword() {
+		t.Error("Import should be a keyword")
 	}
 	if !In.IsKeyword() {
 		t.Error("In should be a keyword")
@@ -1253,6 +1265,9 @@ func TestIsKeyword(t *testing.T) {
 	}
 	if !Try.IsKeyword() {
 		t.Error("Try should be a keyword")
+	}
+	if !Type.IsKeyword() {
+		t.Error("Type should be a keyword")
 	}
 	if !Unless.IsKeyword() {
 		t.Error("Unless should be a keyword")
@@ -1485,9 +1500,6 @@ func TestIsLiteral(t *testing.T) {
 	if Break.IsLiteral() {
 		t.Error("Break should not be a literal")
 	}
-	if Class.IsLiteral() {
-		t.Error("Class should not be a literal")
-	}
 	if Def.IsLiteral() {
 		t.Error("Def should not be a literal")
 	}
@@ -1508,6 +1520,9 @@ func TestIsLiteral(t *testing.T) {
 	}
 	if If.IsLiteral() {
 		t.Error("If should not be a literal")
+	}
+	if Import.IsLiteral() {
+		t.Error("Import should not be a literal")
 	}
 	if In.IsLiteral() {
 		t.Error("In should not be a literal")
@@ -1541,6 +1556,9 @@ func TestIsLiteral(t *testing.T) {
 	}
 	if Try.IsLiteral() {
 		t.Error("Try should not be a literal")
+	}
+	if Type.IsLiteral() {
+		t.Error("Type should not be a literal")
 	}
 	if Unless.IsLiteral() {
 		t.Error("Unless should not be a literal")
@@ -1773,9 +1791,6 @@ func TestIsBinary(t *testing.T) {
 	if Break.IsBinary() {
 		t.Error("Break should not be a binary operator")
 	}
-	if Class.IsBinary() {
-		t.Error("Class should not be a binary operator")
-	}
 	if Def.IsBinary() {
 		t.Error("Def should not be a binary operator")
 	}
@@ -1796,6 +1811,9 @@ func TestIsBinary(t *testing.T) {
 	}
 	if If.IsBinary() {
 		t.Error("If should not be a binary operator")
+	}
+	if Import.IsBinary() {
+		t.Error("Import should not be a binary operator")
 	}
 	if In.IsBinary() {
 		t.Error("In should not be a binary operator")
@@ -1829,6 +1847,9 @@ func TestIsBinary(t *testing.T) {
 	}
 	if Try.IsBinary() {
 		t.Error("Try should not be a binary operator")
+	}
+	if Type.IsBinary() {
+		t.Error("Type should not be a binary operator")
 	}
 	if Unless.IsBinary() {
 		t.Error("Unless should not be a binary operator")
@@ -2061,9 +2082,6 @@ func TestIsUnary(t *testing.T) {
 	if Break.IsUnary() {
 		t.Error("Break should not be a unary operator")
 	}
-	if Class.IsUnary() {
-		t.Error("Class should not be a unary operator")
-	}
 	if Def.IsUnary() {
 		t.Error("Def should not be a unary operator")
 	}
@@ -2084,6 +2102,9 @@ func TestIsUnary(t *testing.T) {
 	}
 	if If.IsUnary() {
 		t.Error("If should not be a unary operator")
+	}
+	if Import.IsUnary() {
+		t.Error("Import should not be a unary operator")
 	}
 	if In.IsUnary() {
 		t.Error("In should not be a unary operator")
@@ -2117,6 +2138,9 @@ func TestIsUnary(t *testing.T) {
 	}
 	if Try.IsUnary() {
 		t.Error("Try should not be a unary operator")
+	}
+	if Type.IsUnary() {
+		t.Error("Type should not be a unary operator")
 	}
 	if Unless.IsUnary() {
 		t.Error("Unless should not be a unary operator")
@@ -2349,9 +2373,6 @@ func TestIsPunc(t *testing.T) {
 	if Break.IsPunc() {
 		t.Error("Break should not be a punctuation")
 	}
-	if Class.IsPunc() {
-		t.Error("Class should not be a punctuation")
-	}
 	if Def.IsPunc() {
 		t.Error("Def should not be a punctuation")
 	}
@@ -2372,6 +2393,9 @@ func TestIsPunc(t *testing.T) {
 	}
 	if If.IsPunc() {
 		t.Error("If should not be a punctuation")
+	}
+	if Import.IsPunc() {
+		t.Error("Import should not be a punctuation")
 	}
 	if In.IsPunc() {
 		t.Error("In should not be a punctuation")
@@ -2405,6 +2429,9 @@ func TestIsPunc(t *testing.T) {
 	}
 	if Try.IsPunc() {
 		t.Error("Try should not be a punctuation")
+	}
+	if Type.IsPunc() {
+		t.Error("Type should not be a punctuation")
 	}
 	if Unless.IsPunc() {
 		t.Error("Unless should not be a punctuation")
@@ -2637,9 +2664,6 @@ func TestIsConstant(t *testing.T) {
 	if Break.IsConstant() {
 		t.Error("Break should not be a constant")
 	}
-	if Class.IsConstant() {
-		t.Error("Class should not be a constant")
-	}
 	if Def.IsConstant() {
 		t.Error("Def should not be a constant")
 	}
@@ -2660,6 +2684,9 @@ func TestIsConstant(t *testing.T) {
 	}
 	if If.IsConstant() {
 		t.Error("If should not be a constant")
+	}
+	if Import.IsConstant() {
+		t.Error("Import should not be a constant")
 	}
 	if In.IsConstant() {
 		t.Error("In should not be a constant")
@@ -2693,6 +2720,9 @@ func TestIsConstant(t *testing.T) {
 	}
 	if Try.IsConstant() {
 		t.Error("Try should not be a constant")
+	}
+	if Type.IsConstant() {
+		t.Error("Type should not be a constant")
 	}
 	if Unless.IsConstant() {
 		t.Error("Unless should not be a constant")
@@ -2925,9 +2955,6 @@ func TestIsField(t *testing.T) {
 	if Break.IsField() {
 		t.Error("Break should not be a field")
 	}
-	if Class.IsField() {
-		t.Error("Class should not be a field")
-	}
 	if Def.IsField() {
 		t.Error("Def should not be a field")
 	}
@@ -2948,6 +2975,9 @@ func TestIsField(t *testing.T) {
 	}
 	if If.IsField() {
 		t.Error("If should not be a field")
+	}
+	if Import.IsField() {
+		t.Error("Import should not be a field")
 	}
 	if In.IsField() {
 		t.Error("In should not be a field")
@@ -2981,6 +3011,9 @@ func TestIsField(t *testing.T) {
 	}
 	if Try.IsField() {
 		t.Error("Try should not be a field")
+	}
+	if Type.IsField() {
+		t.Error("Type should not be a field")
 	}
 	if Unless.IsField() {
 		t.Error("Unless should not be a field")
@@ -3213,9 +3246,6 @@ func TestIsHidden(t *testing.T) {
 	if Break.IsHidden() {
 		t.Error("Break should not be hidden")
 	}
-	if Class.IsHidden() {
-		t.Error("Class should not be hidden")
-	}
 	if Def.IsHidden() {
 		t.Error("Def should not be hidden")
 	}
@@ -3236,6 +3266,9 @@ func TestIsHidden(t *testing.T) {
 	}
 	if If.IsHidden() {
 		t.Error("If should not be hidden")
+	}
+	if Import.IsHidden() {
+		t.Error("Import should not be hidden")
 	}
 	if In.IsHidden() {
 		t.Error("In should not be hidden")
@@ -3269,6 +3302,9 @@ func TestIsHidden(t *testing.T) {
 	}
 	if Try.IsHidden() {
 		t.Error("Try should not be hidden")
+	}
+	if Type.IsHidden() {
+		t.Error("Type should not be hidden")
 	}
 	if Unless.IsHidden() {
 		t.Error("Unless should not be hidden")

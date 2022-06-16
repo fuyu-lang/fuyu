@@ -31,6 +31,7 @@ jobs:
       - name: Test
         run: make test
   fmt-check:
+    name: ci (fmt-check)
     strategy:
       fail-fast: false
     runs-on: ubuntu-latest
