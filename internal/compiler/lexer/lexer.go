@@ -2,7 +2,6 @@
 package lexer
 
 import (
-	"github.com/fuyu-lang/fuyu/internal/source"
 	"unicode/utf8"
 )
 
@@ -20,10 +19,15 @@ type Lexer struct {
 	markCol   int    // The markd column of the lexer.
 }
 
-// MakeLexer creates a new lexer. This never returns nil.
-func MakeLexer(text source.Text) *Lexer {
+// MakeLexer creates a new lexer from a source text. This fails when the input
+// text is not valid UTF-8.
+func MakeLexer(text string) (*Lexer, error) {
+	err := checkUtf8(text)
+	if err != nil {
+		return nil, err
+	}
 	lexer := &Lexer{
-		text:  text.Text(),
+		text:  text,
 		index: 0, line: 1, col: 1,
 		markIndex: 0, markLine: 1, markCol: 1,
 	}
@@ -32,7 +36,7 @@ func MakeLexer(text source.Text) *Lexer {
 		lexer.index = size
 		lexer.mark()
 	}
-	return lexer
+	return lexer, nil
 }
 
 // mark stores the current index, line, and column for later use.

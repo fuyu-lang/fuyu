@@ -9,8 +9,8 @@ func (lexer *Lexer) moreRunes() bool {
 	return lexer.index < len(lexer.text)
 }
 
-// nextRune gets the next run in the lexer. This should never be called without
-// first checking moreRunes.
+// nextRune gets the next rune in the lexer and advances it. This should never
+// be called without first checking moreRunes.
 func (lexer *Lexer) nextRune() rune {
 	// Since the source text is known to be valid, the error is never checked.
 	// This function will also never be called without checking moreRunes, so it
@@ -23,5 +23,11 @@ func (lexer *Lexer) nextRune() rune {
 	} else {
 		lexer.col += 1
 	}
+	return r
+}
+
+// peekRune is like nextRune but does not advance the lexer.
+func (lexer *Lexer) peekRune() rune {
+	r, _ := utf8.DecodeRuneInString(lexer.text[lexer.index:])
 	return r
 }

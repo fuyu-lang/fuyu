@@ -1,3 +1,0 @@
-package lexer
-
-// TODO Tests

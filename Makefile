@@ -22,5 +22,6 @@ fmt-check:
 .PHONY: fmt-check
 
 clean:
+	@go clean -cache -testcache ./...
 	@rm -rf $(OUTPUT)
 .PHONY: clean
