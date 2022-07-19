@@ -2,6 +2,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/github/workflow/status/fuyu-lang/fuyu/ci/main?style=flat-square" alt="GitHub Workflow Status" />
+  <img src="https://goreportcard.com/badge/github.com/fuyu-lang/fuyu?style=flat-square" alt="Go Report Card" />
   <img src="https://img.shields.io/github/license/fuyu-lang/fuyu?style=flat-square" alt="GitHub License" />
 </p>
 
@@ -16,10 +17,11 @@
 
 <h4 align="center">Check it out &rarr; <a href="https://fuyu.so">https://fuyu.so</a></h4>
 
-> **Notice:** Fuyu is currently under development and not ready for production use. When Fuyu is released, this document will be updated.
+<p align="center">
+  Fuyu is a tidy, expressive, functional-first programming language.
+</p>
 
-Fuyu is an _objectively functional_ programming language that combines
-object-oriented and functional paradigms.
+> **Notice:** Fuyu is currently under development and not ready for production use. When Fuyu is released, this document will be updated.
 
 
 
