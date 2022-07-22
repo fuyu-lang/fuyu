@@ -85,7 +85,7 @@ func TestTakeWhile(t *testing.T) {
 	chx.Eq(t, lexerExpect, *lexer)
 }
 
-// testLex runs an lexer operation on a source text and asserts that the
+// testLex runs a lexer operation on a source text and asserts that the
 // specified token is found.
 func testLex(
 	t *testing.T,
@@ -109,7 +109,12 @@ func testLexError(
 	op func(lexer *Lexer) (token.Token, error),
 ) {
 	t.Helper()
-	lexer, _ := MakeLexer(text)
+	lexer, err := MakeLexer(text)
+	if err != nil {
+		e := err.(*compiler.Error)
+		chx.Eq(t, errExpect, *e)
+		return
+	}
 	tok, err := op(lexer)
 	chx.Eq(t, token.Token{}, tok)
 	chx.NotNil(t, err)

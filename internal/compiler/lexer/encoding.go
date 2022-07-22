@@ -88,7 +88,7 @@ func validSourceEncoding(maybeUtf8 string) error {
 			if prev == '\r' {
 				return &compiler.Error{
 					Index: index, Line: line, Col: col,
-					Expect: fmt.Sprintf("%s after %s", codepoint.Humanize('\n'), codepoint.Humanize('\r')),
+					Expect: compiler.ExpectLFAfterCR,
 					Found:  codepoint.Humanize(r),
 				}
 			}
@@ -101,8 +101,8 @@ func validSourceEncoding(maybeUtf8 string) error {
 	if prev == '\r' {
 		return &compiler.Error{
 			Index: index, Line: line, Col: col,
-			Expect: fmt.Sprintf("%s after %s", codepoint.Humanize('\n'), codepoint.Humanize('\r')),
-			Found:  "end of input",
+			Expect: compiler.ExpectLFAfterCR,
+			Found:  compiler.FoundEOF,
 		}
 	}
 	return nil

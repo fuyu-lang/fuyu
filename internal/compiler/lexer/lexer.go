@@ -22,8 +22,7 @@ type Lexer struct {
 // MakeLexer creates a new lexer from a source text. This fails when the input
 // text is not valid UTF-8.
 func MakeLexer(text string) (*Lexer, error) {
-	// TODO Use validSourceEncoding here
-	err := checkUtf8(text)
+	err := validSourceEncoding(text)
 	if err != nil {
 		return nil, err
 	}

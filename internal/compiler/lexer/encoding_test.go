@@ -90,7 +90,7 @@ func TestValidSourceEncodingInvalidMissingLinefeedAtEnd(t *testing.T) {
 	err := *validSourceEncoding("x\r").(*compiler.Error)
 	errExpect := compiler.Error{
 		Index: 2, Line: 1, Col: 3,
-		Expect: "line feed (U+000A) after carriage return (U+000D)", Found: "end of input",
+		Expect: "line feed (U+000A) after carriage return (U+000D)", Found: "EOF",
 	}
 	chx.Eq(t, errExpect, err)
 }
