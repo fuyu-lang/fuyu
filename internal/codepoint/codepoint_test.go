@@ -21,10 +21,10 @@ func TestU(t *testing.T) {
 
 func TestHumanize(t *testing.T) {
 	data := map[rune](string){
-		'\t':         "tab",
-		'\n':         "line feed",
-		'\r':         "carriage return",
-		' ':          "space",
+		'\t':         "tab (U+0009)",
+		'\n':         "line feed (U+000A)",
+		'\r':         "carriage return (U+000D)",
+		' ':          "space (U+0020)",
 		rune(0x00A0): "U+00A0",
 		'ϕ':          "ϕ",
 		'\x01':       "U+0001",

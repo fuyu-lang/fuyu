@@ -14,8 +14,8 @@ type Kind int
 const (
 	Comment Kind = iota // # ...
 
-	Space   // A space (U+20)
-	Newline // An LF (U+0A) or CRLF (U+0D U+0A)
+	Space   // A space (U+0020)
+	Newline // An LF (U+000A) or CRLF (U+000D U+000A)
 
 	marker_ident_begin
 	IdentArg           // @1

@@ -38,7 +38,7 @@ func TestMakeLexerInvalidUtf8(t *testing.T) {
 	e := *err.(*compiler.Error)
 	eExpect := compiler.Error{
 		Index: 18, Line: 2, Col: 5,
-		Expect: "", Found: "invalid UTF-8 at byte 18",
+		Expect: "", Found: "invalid bit sequence in UTF-8 string",
 	}
 	chx.Eq(t, eExpect, e)
 }

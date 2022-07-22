@@ -25,13 +25,13 @@ func Humanize(r rune) string {
 	if unicode.IsSpace(r) {
 		switch r {
 		case '\t':
-			return fmt.Sprintf("tab")
+			return fmt.Sprintf("tab (%s)", u(r))
 		case '\n':
-			return fmt.Sprintf("line feed")
+			return fmt.Sprintf("line feed (%s)", u(r))
 		case '\r':
-			return fmt.Sprintf("carriage return")
+			return fmt.Sprintf("carriage return (%s)", u(r))
 		case ' ':
-			return fmt.Sprintf("space")
+			return fmt.Sprintf("space (%s)", u(r))
 		default:
 			return u(r)
 		}
