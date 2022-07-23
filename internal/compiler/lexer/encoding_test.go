@@ -1,7 +1,9 @@
 package lexer
 
 import (
+	"fmt"
 	"github.com/fuyu-lang/fuyu/internal/chx"
+	"github.com/fuyu-lang/fuyu/internal/codepoint"
 	"github.com/fuyu-lang/fuyu/internal/compiler"
 	"testing"
 )
@@ -50,7 +52,7 @@ func TestCheckUtf8Invalid(t *testing.T) {
 	err := *checkUtf8("abc\nde\xff\nghi").(*compiler.Error)
 	errExpect := compiler.Error{
 		Index: 6, Line: 2, Col: 3,
-		Expect: "", Found: "invalid bit sequence in UTF-8 string",
+		Expect: "", Found: compiler.FoundUtf8InvalidBits,
 	}
 	chx.Eq(t, errExpect, err)
 }
@@ -72,7 +74,7 @@ func TestValidSourceEncodingInvalid(t *testing.T) {
 	err := *validSourceEncoding("abc\nde\xff\nghi").(*compiler.Error)
 	errExpect := compiler.Error{
 		Index: 6, Line: 2, Col: 3,
-		Expect: "", Found: "invalid bit sequence in UTF-8 string",
+		Expect: "", Found: compiler.FoundUtf8InvalidBits,
 	}
 	chx.Eq(t, errExpect, err)
 }
@@ -81,7 +83,7 @@ func TestValidSourceEncodingInvalidMissingLinefeed(t *testing.T) {
 	err := *validSourceEncoding("\rx").(*compiler.Error)
 	errExpect := compiler.Error{
 		Index: 1, Line: 1, Col: 2,
-		Expect: "line feed (U+000A) after carriage return (U+000D)", Found: "x",
+		Expect: compiler.ExpectLFAfterCR, Found: "x",
 	}
 	chx.Eq(t, errExpect, err)
 }
@@ -90,7 +92,7 @@ func TestValidSourceEncodingInvalidMissingLinefeedAtEnd(t *testing.T) {
 	err := *validSourceEncoding("x\r").(*compiler.Error)
 	errExpect := compiler.Error{
 		Index: 2, Line: 1, Col: 3,
-		Expect: "line feed (U+000A) after carriage return (U+000D)", Found: "EOF",
+		Expect: compiler.ExpectLFAfterCR, Found: "EOF",
 	}
 	chx.Eq(t, errExpect, err)
 }
@@ -99,7 +101,7 @@ func TestValidSourceEncodingInvalidIllegalCodepoint(t *testing.T) {
 	err := *validSourceEncoding("abc\tdef").(*compiler.Error)
 	errExpect := compiler.Error{
 		Index: 3, Line: 1, Col: 4,
-		Found: "invalid UTF-8 codepoint tab (U+0009)",
+		Found: fmt.Sprintf(compiler.FoundUtf8IllegalCodepointFmt, codepoint.Humanize('\t')),
 	}
 	chx.Eq(t, errExpect, err)
 }

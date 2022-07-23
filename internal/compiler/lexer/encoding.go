@@ -38,7 +38,7 @@ func checkUtf8(maybeUtf8 string) error {
 			} else if size == 1 {
 				return &compiler.Error{
 					Index: index, Line: line, Col: col,
-					Found: "invalid bit sequence in UTF-8 string",
+					Found: compiler.FoundUtf8InvalidBits,
 				}
 			} else {
 				// This is a valid rune with a value equal to
@@ -77,7 +77,7 @@ func validSourceEncoding(maybeUtf8 string) error {
 		if err := checkRune(r); err != nil {
 			return &compiler.Error{
 				Index: index, Line: line, Col: col,
-				Found: fmt.Sprintf("invalid UTF-8 codepoint %s", err.Error()),
+				Found: fmt.Sprintf(compiler.FoundUtf8IllegalCodepointFmt, err.Error()),
 			}
 		}
 		if r == '\n' {

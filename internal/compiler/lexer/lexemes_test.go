@@ -193,12 +193,12 @@ func TestLexNumberBin(t *testing.T) {
 	testLexError(t, "0b", op,
 		compiler.Error{
 			Index: 2, Line: 1, Col: 3,
-			Expect: compiler.ExpectDigitInInt,
+			Expect: compiler.ExpectDigitInInt, Found: "",
 		})
 	testLexError(t, "0b_", op,
 		compiler.Error{
 			Index: 3, Line: 1, Col: 4,
-			Expect: compiler.ExpectDigitInInt,
+			Expect: compiler.ExpectDigitInInt, Found: "",
 		})
 }
 
@@ -221,12 +221,12 @@ func TestLexNumberOct(t *testing.T) {
 	testLexError(t, "0o", op,
 		compiler.Error{
 			Index: 2, Line: 1, Col: 3,
-			Expect: compiler.ExpectDigitInInt,
+			Expect: compiler.ExpectDigitInInt, Found: "",
 		})
 	testLexError(t, "0o_", op,
 		compiler.Error{
 			Index: 3, Line: 1, Col: 4,
-			Expect: compiler.ExpectDigitInInt,
+			Expect: compiler.ExpectDigitInInt, Found: "",
 		})
 }
 
@@ -249,12 +249,12 @@ func TestLexNumberHex(t *testing.T) {
 	testLexError(t, "0x", op,
 		compiler.Error{
 			Index: 2, Line: 1, Col: 3,
-			Expect: compiler.ExpectDigitInInt,
+			Expect: compiler.ExpectDigitInInt, Found: "",
 		})
 	testLexError(t, "0x_", op,
 		compiler.Error{
 			Index: 3, Line: 1, Col: 4,
-			Expect: compiler.ExpectDigitInInt,
+			Expect: compiler.ExpectDigitInInt, Found: "",
 		})
 }
 

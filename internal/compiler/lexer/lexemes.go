@@ -13,7 +13,6 @@ func (lexer *Lexer) makeToken(kind token.Kind) (token.Token, error) {
 	return t, nil
 }
 
-// TODO Use this
 // makeError builds an error from the state of the lexer. The token always has
 // the kind Illegal.
 func (lexer *Lexer) makeError(expect, found string) (token.Token, error) {
