@@ -31,3 +31,19 @@ func (lexer *Lexer) peekRune() rune {
 	r, _ := utf8.DecodeRuneInString(lexer.text[lexer.index:])
 	return r
 }
+
+// peekNthRune peeks ahead n runes, starting at 1. Unlike peekRune, this is
+// safe and called be called at any time without checking moreRunes.
+func (lexer *Lexer) peekNthRune(n int) rune {
+	index := lexer.index
+	var r rune = 0
+	var size int
+	for i := 0; i < n; i++ {
+		r, size = utf8.DecodeRuneInString(lexer.text[index:])
+		if size == 0 {
+			return 0
+		}
+		index += size
+	}
+	return r
+}

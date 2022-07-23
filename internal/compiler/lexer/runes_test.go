@@ -71,3 +71,18 @@ func TestPeekRune(t *testing.T) {
 	expect('\n', 21, 3, 4)
 	expect('🍉', 22, 4, 1)
 }
+
+func TestPeekNthRune(t *testing.T) {
+	lexer, _ := MakeLexer("abcdef")
+	// Peeks in range
+	chx.Eq(t, 'a', lexer.peekNthRune(1))
+	chx.Eq(t, 'b', lexer.peekNthRune(2))
+	chx.Eq(t, 'c', lexer.peekNthRune(3))
+	chx.Eq(t, 'd', lexer.peekNthRune(4))
+	chx.Eq(t, 'e', lexer.peekNthRune(5))
+	chx.Eq(t, 'f', lexer.peekNthRune(6))
+	// Peeks out of range
+	chx.Eq(t, rune(0), lexer.peekNthRune(0))
+	chx.Eq(t, rune(0), lexer.peekNthRune(7))
+	chx.Eq(t, rune(0), lexer.peekNthRune(-1))
+}
