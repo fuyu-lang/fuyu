@@ -31,7 +31,8 @@ func (err Error) Error() string {
 // something was expected by not found. The second form are those prefixed with
 // Found, which indicate that something was found but not expected.
 const (
-	ExpectLFAfterCR string = "line feed (U+000A) after carriage return (U+000D)"
+	ExpectLFAfterCR  string = "line feed (U+000A) after carriage return (U+000D)"
+	ExpectDigitInInt        = "at least one digit in integer literal"
 
 	FoundEOF = "EOF"
 )

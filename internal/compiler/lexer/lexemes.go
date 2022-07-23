@@ -92,15 +92,83 @@ func (lexer *Lexer) lexWord() (token.Token, error) {
 	panic("Not implemented")
 }
 
-// lexBytes assumes that the lexer is sitting on the first rune of a bytes
-// literal and consumes the entire bytes literal.
-func (lexer *Lexer) lexBytes() (token.Token, error) {
-	panic("Not implemented") // TODO
-}
-
 // lexNumber assumes that the lexer is sitting on the first rune of a number
 // literal and consumes the entire number.
 func (lexer *Lexer) lexNumber() (token.Token, error) {
+	if lexer.peekRune() == '0' {
+		lexer.nextRune()
+		if lexer.moreRunes() {
+			r := lexer.peekRune()
+			switch r {
+			case 'b':
+				lexer.nextRune()
+				return lexBin(lexer)
+			case 'o':
+				lexer.nextRune()
+				return lexOct(lexer)
+			case 'x':
+				lexer.nextRune()
+				return lexHex(lexer)
+				// TODO Default or is that implicit?
+			}
+		}
+	}
+	return lexDec(lexer)
+}
+
+// lexBin consumes the rest of a binary integer literal after the 0b.
+func lexBin(lexer *Lexer) (token.Token, error) {
+	seenDigit := false
+	lexer.takeWhile(func(r rune) bool {
+		if r == '0' || r == '1' {
+			seenDigit = true
+			return true
+		}
+		return r == '_'
+	})
+	if seenDigit {
+		// TODO Return token.IntBin?
+		return lexer.makeToken(token.Int)
+	}
+	return lexer.makeErrorExpect(compiler.ExpectDigitInInt)
+}
+
+// lexOct consumes the rest of a octal integer literal after the 0c.
+func lexOct(lexer *Lexer) (token.Token, error) {
+	seenDigit := false
+	lexer.takeWhile(func(r rune) bool {
+		if '0' <= r && r <= '7' {
+			seenDigit = true
+			return true
+		}
+		return r == '_'
+	})
+	if seenDigit {
+		// TODO Return token.IntOct?
+		return lexer.makeToken(token.Int)
+	}
+	return lexer.makeErrorExpect(compiler.ExpectDigitInInt)
+}
+
+// lexHex consumes the rest of a hexdecimal integer literal after the 0x.
+func lexHex(lexer *Lexer) (token.Token, error) {
+	seenDigit := false
+	lexer.takeWhile(func(r rune) bool {
+		if ('0' <= r && r <= '9') || ('a' <= r && r <= 'f') || ('A' <= r && r <= 'F') {
+			seenDigit = true
+			return true
+		}
+		return r == '_'
+	})
+	if seenDigit {
+		// TODO Return token.IntHex?
+		return lexer.makeToken(token.Int)
+	}
+	return lexer.makeErrorExpect(compiler.ExpectDigitInInt)
+}
+
+// TODO Docs
+func lexDec(lexer *Lexer) (token.Token, error) {
 	panic("Not implemented") // TODO
 }
 
@@ -110,6 +178,12 @@ func (lexer *Lexer) lexNumber() (token.Token, error) {
 // Strings which support interpolation must be processed separately to access
 // their sub-tokens.
 func (lexer *Lexer) lexString() (token.Token, error) {
+	panic("Not implemented") // TODO
+}
+
+// lexBytes assumes that the lexer is sitting on the first rune of a bytes
+// literal and consumes the entire bytes literal.
+func (lexer *Lexer) lexBytes() (token.Token, error) {
 	panic("Not implemented") // TODO
 }
 
