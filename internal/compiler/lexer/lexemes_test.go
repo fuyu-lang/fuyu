@@ -67,6 +67,24 @@ func TestMakeErrorFound(t *testing.T) {
 	chx.Eq(t, errExpect, err)
 }
 
+func TestTakeIf(t *testing.T) {
+	text := "ab"
+	lexer, _ := MakeLexer(text)
+	lexerExpect := Lexer{
+		text:  text,
+		index: 1, line: 1, col: 2,
+		markIndex: 0, markLine: 1, markCol: 1,
+	}
+
+	// This advances the lexer
+	lexer.takeIf(func(r rune) bool { return r == 'a' })
+	chx.Eq(t, lexerExpect, *lexer)
+
+	// This does not advance the lexer
+	lexer.takeIf(func(r rune) bool { return r == 'a' })
+	chx.Eq(t, lexerExpect, *lexer)
+}
+
 func TestTakeWhile(t *testing.T) {
 	text := "aaab"
 	lexer, _ := MakeLexer(text)

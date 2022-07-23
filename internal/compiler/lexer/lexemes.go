@@ -35,15 +35,18 @@ func (lexer *Lexer) makeErrorFound(found string) (token.Token, error) {
 	return lexer.makeError("", found)
 }
 
+// takeIf advances the lexer if the condition is not satisifed. If there are no
+// more runes in the lexer then nothing happens.
+func (lexer *Lexer) takeIf(cond func(rune) bool) {
+	if lexer.moreRunes() && cond(lexer.peekRune()) {
+		lexer.nextRune()
+	}
+}
+
 // takeWhile advances the lexer until either there are no more runes in the
 // lexer or the condition is not satisifed.
 func (lexer *Lexer) takeWhile(cond func(rune) bool) {
-	for lexer.moreRunes() {
-		if cond(lexer.peekRune()) {
-			lexer.nextRune()
-		} else {
-			break
-		}
+	for ; lexer.moreRunes() && cond(lexer.peekRune()); lexer.nextRune() {
 	}
 }
 
@@ -85,10 +88,7 @@ func (lexer *Lexer) lexNewline() (token.Token, error) {
 // which are identifiers, keywords, boolean literals, and nil literals, and
 // consumes the entire word.
 func (lexer *Lexer) lexWord() (token.Token, error) {
-	// TODO Identifiers
-	// TODO Keywords
-	// TODO Bool
-	// TODO Nil
+	// TODO Classify as kind: Identifier, keyword, bool, nil
 	panic("Not implemented")
 }
 
